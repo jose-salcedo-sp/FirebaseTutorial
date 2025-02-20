@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setupUI()
         initializeFirebase()
         readDB()
-        loadMockData() // Load mock movies
     }
 
     private fun setupUI() {
@@ -62,19 +61,6 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun loadMockData() {
-        data = arrayListOf(
-            Movies("Inception", "2010", "action", "asdasdasdas"),
-            Movies("The Godfather", "1972", "drama", "idusaaiosda"),
-            Movies("Interstellar", "2014", "action", "posadiasdoip"),
-            Movies("Parasite", "2019", "comedy", "asodiasidoasud"),
-            Movies("The Dark Knight", "2008", "action", "asdausidasuid"),
-            Movies("The exorcist", "1973", "horror", "asdjahdsjhasl")
-        )
-        val list = findViewById<ListView>(R.id.list)
-        list.adapter = MovieAdapter(this, data)
-    }
-
     private fun logout() {
         auth.signOut()
         startActivity(Intent(this, Login::class.java))
@@ -88,21 +74,28 @@ class MainActivity : AppCompatActivity() {
     private fun readDB() {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                data.clear()
+                Log.d("FirebaseDB", "Fetching data from Firebase...")
+
+                data = ArrayList()
+
                 snapshot.children.forEach { child ->
-                    val movie = Movies(
-                        name = child.child("name").getValue(String::class.java) ?: "",
-                        year = child.child("year").getValue(String::class.java) ?: "",
-                        genre = child.child("genre").getValue(String::class.java) ?: "",
-                        id = child.key ?: ""
-                    )
+                    val name = child.child("name").value?.toString() ?: "Unknown"
+                    val year = child.child("year").value?.toString() ?: "Unknown"
+                    val genre = child.child("genre").value?.toString() ?: "Unknown"
+                    val key = child.key ?: "No Key"
+
+                    val movie = Movies(name, year, genre, key)
                     data.add(movie)
+
+                    Log.d("FirebaseDB", "Movie Loaded: Name: $name, Year: $year, Genre: $genre, Key: $key")
                 }
+
+                Log.d("FirebaseDB", "Total Movies Loaded: ${data.size}")
                 fillList()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w("FirebaseDB", "Failed to read value.", error.toException())
+                Log.e("FirebaseDB", "Failed to read value: ${error.toException()}")
             }
         })
     }
