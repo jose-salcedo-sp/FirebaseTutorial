@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditActivity">
-
+    tools:context=".EditMoviesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +25,8 @@
                 android:id="@+id/txtViewTitle_EditFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="EDIT"
+                android:layout_margin="5dp"
+                android:text="EDIT MOVIE"
                 android:textAlignment="center"
                 android:textColor="@color/primaryText"
                 android:textSize="36sp"
@@ -57,7 +56,7 @@
                 android:layout_margin="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Name" />
+                android:text="Year" />
 
             <EditText
                 android:id="@+id/edtTxtGenre_EditFrag"
@@ -66,7 +65,7 @@
                 android:layout_margin="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Name" />
+                android:text="Genre" />
 
             <EditText
                 android:id="@+id/edtTxtImage_EditFrag"
@@ -75,7 +74,7 @@
                 android:layout_margin="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Name" />
+                android:text="Image link" />
 
         </LinearLayout>
 
@@ -89,7 +88,7 @@
                 android:id="@+id/butCancel_EditFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/graphicDesign3"
                 android:text="CANCEL"
                 android:textSize="20sp"
@@ -99,11 +98,12 @@
                 android:id="@+id/butEdit_EditFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="EDIT"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/graphicDesign1"
+                android:text="EDIT MOVIE"
                 android:textSize="20sp"
-                app:cornerRadius="5dp"
-                android:backgroundTint="@color/graphicDesign1"/>
+                app:cornerRadius="5dp" />
         </LinearLayout>
 
     </LinearLayout>

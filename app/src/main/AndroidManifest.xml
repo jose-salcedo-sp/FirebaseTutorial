@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Add internet permission here -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <!-- Always include this permission -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Include only if your app benefits from precise location access. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,15 +20,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FirebaseTutorial"
+        android:theme="@style/Theme.Movies"
         tools:targetApi="31">
         <activity
-            android:name=".Edit"
+            android:name=".EditActivity"
             android:exported="false"
             android:launchMode="singleInstance"/>
-
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="true"
             android:launchMode="singleInstance">
             <intent-filter>
@@ -27,13 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:launchMode="singleInstance">
-
-        </activity>
+            android:exported="false"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

@@ -1,52 +1,28 @@
 package com.example.firebasetutorial
 
-import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
-class MovieAdapter(
-    context: Activity,
-    private val movies: ArrayList<Movies>
-) : ArrayAdapter<Movies>(context, R.layout.item, movies) {
-
+class MovieAdapter (private val context: Context, private val moviesList
+: ArrayList<Movie>):ArrayAdapter<Movie>(context, R.layout.item, moviesList){
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val viewHolder: ViewHolder
-        val view: View
-
-        if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item, parent, false)
-            viewHolder = ViewHolder(view)
-            view.tag = viewHolder
-        } else {
-            view = convertView
-            viewHolder = view.tag as ViewHolder
-        }
-
-        val movie = movies[position]
-        viewHolder.name.text = movie.name
-        viewHolder.year.text = movie.year
-        viewHolder.genre.text = movie.genre
-
-        viewHolder.image.setImageResource(
-            when (movie.genre?.lowercase()) {
-                "action" -> R.drawable.action
-                "drama" -> R.drawable.drama
-                "comedy" -> R.drawable.comedy
-                else -> R.drawable.default_image // Imagen por defecto si el género no coincide
-            }
-        )
-
+        val inflater:LayoutInflater = LayoutInflater.from(context)
+        val view:View = inflater.inflate(R.layout.item, null)
+        view.findViewById<TextView>(R.id.txtView_Name).text = moviesList[position].name.toString()
+        view.findViewById<TextView>(R.id.txtView_Year).text = moviesList[position].year.toString()
+        view.findViewById<TextView>(R.id.txtView_Genre).text = moviesList[position].genre.toString()
+        view.findViewById<TextView>(R.id.txtView_Location).text = moviesList[position].location.toString()
+        val imageView = view.findViewById<ImageView>(R.id.imgView_Poster)
+        val imageUrl = moviesList[position].img.toString()
+        Glide.with(view)
+            .load(imageUrl)
+            .into(imageView)
         return view
-    }
-
-    private class ViewHolder(view: View) {
-        val name: TextView = view.findViewById(R.id.name)
-        val year: TextView = view.findViewById(R.id.year)
-        val genre: TextView = view.findViewById(R.id.genre)
-        val image: ImageView = view.findViewById(R.id.img)
     }
 }

@@ -2,10 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ViewMoviesFragment">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/but_Add_ViewFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="Add item" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -16,24 +28,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_Main"
+
+        <ListView
+            android:id="@+id/listView_MovieCatalog_ViewFrag"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/graphicDesign1"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:collapseIcon="@drawable/ic_nav"
-            app:title="Movie Catalog"
-            app:titleTextColor="@color/white" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView_Main"
-            android:name="com.example.firebasetutorial.ViewMoviesFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
+        </ListView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

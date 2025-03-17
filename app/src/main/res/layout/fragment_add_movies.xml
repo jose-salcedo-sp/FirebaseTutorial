@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditActivity">
-
+    tools:context=".AddMoviesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,10 +22,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtViewTitle_EditFrag"
+                android:id="@+id/txtViewTitle_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="EDIT"
+                android:layout_margin="5dp"
+                android:text="CREATE"
                 android:textAlignment="center"
                 android:textColor="@color/primaryText"
                 android:textSize="36sp"
@@ -42,40 +41,40 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/edtTxtName_EditFrag"
+                android:id="@+id/edtTxtName_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="Name"
+                android:inputType="text" />
 
             <EditText
-                android:id="@+id/edtTxtYear_EditFrag"
+                android:id="@+id/edtTxtYear_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="Year"
+                android:inputType="text" />
 
             <EditText
-                android:id="@+id/edtTxtGenre_EditFrag"
+                android:id="@+id/edtTxtGenre_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="Genre"
+                android:inputType="text" />
 
             <EditText
-                android:id="@+id/edtTxtImage_EditFrag"
+                android:id="@+id/edtTxtImage_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="Image Link"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -86,26 +85,28 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/butCancel_EditFrag"
+                android:id="@+id/butCancel_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="@color/graphicDesign3"
                 android:text="CANCEL"
                 android:textSize="20sp"
                 app:cornerRadius="5dp" />
 
             <Button
-                android:id="@+id/butEdit_EditFrag"
+                android:id="@+id/butAdd_AddFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="EDIT"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/graphicDesign1"
+                android:text="CREATE"
                 android:textSize="20sp"
-                app:cornerRadius="5dp"
-                android:backgroundTint="@color/graphicDesign1"/>
+                app:cornerRadius="5dp" />
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
